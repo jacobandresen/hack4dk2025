@@ -5,7 +5,7 @@
 
 Brug designet fra SMK's hjemmeside her https://www.smk.dk .
 
-Sørg for at det er nemt at læse hvad der står på skærmen. Tænk at teksten skal fremstå tydeligt foran baggrunden.
+Sørg for at det er nemt at læse hvad der står på skærmen. Tænk på at teksten skal fremstå tydeligt foran baggrunden.
 
 Søg altid for at hele billeder af malerier vises. Tillad flere forskellige størrelsere af resultatkort.
 

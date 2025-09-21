@@ -5,7 +5,7 @@
 
 Brug designet fra DFI's hjemmeside her https://www.dfi.dk .
 
-Sørg for at det er nemt at læse hvad der står på skærmen. Tænk at teksten skal fremstå tydeligt foran baggrunden.
+Sørg for at det er nemt at læse hvad der står på skærmen. Tænk på at teksten skal fremstå tydeligt foran baggrunden.
 
 
 ## Brug af API

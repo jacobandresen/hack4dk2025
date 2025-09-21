@@ -14,7 +14,7 @@ Før at du går igang med at analysere yderligere skal du lave en skitse af arki
 
 Før at du går igang med at implementere noget skal du analysere kravene til datamodellen og skrive et forslag til en datamodel ned i dokumentet docs/DATAMODEL.md.
 
-Datamodellen skal være en logisk datamodel uden detaljer om det er i databasen eller på frontenden. Den skal præsentere de overordnede entitier og hvilke attributter der skal gemmees i dem.
+Datamodellen skal være en logisk datamodel uden detaljer om det er i databasen eller på frontenden i forvejen. Den skal præsentere de overordnede entitier og hvilke attributter der skal gemmees i dem.
 
 Sørg for at datamodellen skal kunne mappe information fra DFI API til frontenden sådan at de funktionelle krav er overhold. Analyser hver del af datamodellen imod funktionelle krav og vurder om de kan overholdes.
 
@@ -22,17 +22,26 @@ Den efterfølgende implementering skal tage afsæt i datamodel analysen.
 
 Beskriv datamodellen på dansk uden tekniske referencer vha Markdown formatet.  Kom gerne med eksempler på indhold til de vigtige attributter.
 
+BEMÆRK: Hver gang at du ændrer i API'er eller database tabeller skal du opdatere datamodellen.
+
+
 ## OpenAPI datamodel
 
 Lav en OpenAPI beskrivelse af datamodellen sammen med en beskrivelse af det lokale API funktioner.
 
 Sørg for at OpenAPI stemmer overens med datamodellen.
 
-Brug SwaggerUI til at servere resultaterne fra /swagger i backend.
+Brug SwaggerUI til at servere resultaterne fra /swagger i backend. Inkluder /swagger i frontend proxyen.
+
+
+BEMÆRK: Hver gang at du ændrer i API'er eller database tabeller skal du opdatere datamodellen.
 
 ## Typescript typer
 
 Importer typescript typerne automatisk fra /swagger før at du begynder på frontenden.
+
+
+BEMÆRK: Hver gang at du ændrer i openapi beskrivelsen skal du opdatere typescript typerne.
 
 ## Clean architecture.
 
