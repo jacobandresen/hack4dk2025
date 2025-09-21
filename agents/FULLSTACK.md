@@ -4,6 +4,8 @@ Du er en ekspert fullstack udvikler.  Du har iøjeblikket en præference for Pyt
  
 Du forstår og taler dansk. Du foretrækker at svare på dansk.
 
+DU PRIOTERER E2E PLAYWRIGHT TESTS MEGET HØJT.
+
 
 ## Kendskab til arkitektur
 Før at du går igang med at analysere yderligere skal du lave en skitse af arkitekturen udfra de beskrevne krav. Beskriv arkitekturen i filen docs/ARCHITECTURE.MD . Tegn et oversigts C4 diagram som beskrevet på https://c4model.com .  Skab en oversigt over hvor de forskellige ting kører.  Vis C4 diagrammet som ASCII art i docs/ARCHITECURE.md.  Du skal ikke vise selve modellen for diagrammet.
@@ -20,13 +22,17 @@ Beskriv datamodellen på dansk uden tekniske referencer vha Markdown formatet.  
 Den efterfølgende implementering skal tage afsæt i datamodel analysen.
 
 
-## Oprettelse af OpenAPI beskrivelse
+## OpenAPI datamodel
 
-Du skal oprette en OpenAPI beskrivelse af API kaldene tilgængelige fra backend. Brug løsningens design og stil til at vise  SwaggerUI. SwaggerUI skal være tilgængeligt fra backend via /swagger
+Lav en OpenAPI beskrivelse af datamodellen sammen med en beskrivelse af det lokale API funktioner.
 
-## Brug af migrations
+Sørg for at OpenAPI stemmer overens med datamodellen.
 
-Håndter opdatering af databasen vha migrations fra python.
+Brug SwaggerUI til at servere resultaterne fra /swagger
+
+## Typescript typer
+
+Sørg for at Typescript typerne stemmer overens med beskrivelsen i OpenAPI.
 
 ## Clean architecture.
 
@@ -37,11 +43,12 @@ Løsningen skal have en modulær opdeling med fokus på lav kompleksitet i hvert
 For at understøtte lagdelingen skal du bruge docker compose med følgende services:
 
 - database:  En PostgreSQL database
-- backend: Python FastAPI . Kan nå databasen
-- frontend: En Vue webapplikation. Kan nå backend
+- backend: Python FastAPI . Kan nå databasen. Porten skal ikke åbnes på localhost. 
+- frontend: En Vue webapplikation. Exponerer /api via en proxy til port 8000.
 
 Løsningen skal virke fra en browser der udelukkende snakker med frontend via relative urler. Bemærk at kaldet fra frontend til backend foregår internt i docker.
- 
+
+Opsæt en proxy på frontend der mapper /api på backend til /api på frontend. Proxyen skal køre på frontend servicen. 
 
 ## CORS indstillinger under lokal udvikling
 
@@ -53,6 +60,8 @@ Når du viser søgeresultater , så tillad at resultaterne kan være af forskell
 
 ## Tests
 Tests er meget vigtige.  Løsningen skal dækkes fuldstændigt af  tests.
+
+Du skal teste i små skridt. Hver enkelt gang du tilføjer noget nyt skal du tilføje en test. Fiks fejl når du ser dem første gang.
 
 ### Unittests af frontend komponenter
 
@@ -66,22 +75,21 @@ Du skal skrive tests for hver enkelt API kald. Både positive og negative tests.
 
 Test API'er vha integrationstest skrevet i python. Når du er færdig skal du gemme testene.
 
-BEMÆRK:  du skal ikke skrive tests via shellscripts.
 
-### Test frontend via Playwright.
+### E2E frontend tests via Playwright.
 
-Hver gang du laver en rettelse skal du teste det via frontend.
-
-Hver gang du implementerer noget nyt eller ændrer noget skal du skrive en test der tester ændringen. Hver eneste gang. Bemærk at dette også gælder opsætningsændringer.
 
 Alle features skal testes fra frontenden vha en playwright e2e test.
 
 BEMÆRK: Før at du går igang med at køre en Playwright test skal du tjekke om alle docker services kører uden fejl.
 
-#### Installation af Playwright
-Installer Playwright i frontend containeren sådan her:
+BEMÆRK: DET ER VIGTIGT AT DISSE TESTS VIRKER! LAD VÆRE MED AT IGNORE DEM.
 
-docker-compose exec frontend npx playwright install
+
+#### Installation af Playwright
+Installer Playwright uden for docker sådan her:
+
+npx playwright install
 
 #### Kørsel af Playwright
 Undgå at køre HTML test reporter . Brug dot reporter istedet.

@@ -23,8 +23,6 @@ https://api.dfi.dk/v1/film?Title=jagten
 Hvis der står noget andet i pdf'en skal du bruge eksemplerne først.
 
 
-
-
 ## Forside
 
 Forsiden starter med at en søgeform, hvor der kan søges efter en film. Bemærk at søgeformen kun skal være der 1 gang.  Når der er blevet søgt , så skal der vises søgeresultater.  Det skal være muligt at køre en ny søgning som overskriver gamle søgeresultater.

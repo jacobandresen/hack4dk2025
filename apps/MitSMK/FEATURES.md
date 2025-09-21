@@ -7,13 +7,13 @@ Brug designet fra SMK's hjemmeside her https://www.smk.dk .
 
 Sørg for at det er nemt at læse hvad der står på skærmen. Tænk at teksten skal fremstå tydeligt foran baggrunden.
 
+Søg altid for at hele billeder af malerier vises. Tillad flere forskellige størrelsere af resultatkort.
+
 
 ## Brug af API
 
 Brug DFI apiet som beskrevet her : https://api.smk.dk/api/v1/docs/#/artworks/searchArt 
 
-
-BEMÆRK: du skal aflevere søgetermen i "keys" .. ikke "q".
 
 Tag udgangspunkt i eksemplerne her først:
 
@@ -26,6 +26,9 @@ https://api.smk.dk/api/v1/art/search/?keys=amager&offset=0&rows=100
 Find titler på alle kunstværker, som har foto, som er malerier og som er i public domain, spring ingen over og vis de første 30:
 https://api.smk.dk/api/v1/art/search/?keys=*&fields=titles&filters=[has_image:true],[object_names:maleri],[public_domain:true]&offset=0&rows=30
 
+BEMÆRK: Søgningen fra søgeformen på skærmen skal mappes til attributten"keys" i SMK API 
+
+BEMÆRK: SMK API'et bruger image_thumbnail og image_iiif_id som attributter for billeder.
 
 ## Forside
 
@@ -58,8 +61,7 @@ Vis følgende detaljer:
 
 Tilbyd en knap så brugeren kan downloaded billedet i en højere opløsning hvis muligt.
  
-BEMÆRK: Det er vigtigt at du kan vise billedet her .
-
+BEMÆRK: DET ER VIGTIGT AT DU KAN VISE BILLEDET HER.
 
 
 ## Søgning efter kunstner
@@ -81,5 +83,6 @@ Efer at være logget ind kan brugeren oprette en eller flere samlinger , hvor ha
 Når et maleri vises i en samling, så skal der ikke være info eller knapper om samlingen på selve maleriet.
 
 Samlingen skal vises som en accordion. 
+
 
 Tillad at brugeren kan slette et maleri fra en samling igen.

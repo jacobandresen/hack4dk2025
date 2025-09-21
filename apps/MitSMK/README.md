@@ -3,7 +3,7 @@ En webapp der kan bruges til at søge efter kunstværker via SMK's api og gruppe
 
 Features er beskrevet i FEATURES.md
 
-Teknik er beskrevet i ../AGENTS.md .
+Teknik er beskrevet i FULLSTACK.md .
 
 BEMÆRK: SMK API'et tager imod søgestrengen i "keys" attributten.
 BEMÆRK: DET ER VIGTIGT at du kan vise billeder.

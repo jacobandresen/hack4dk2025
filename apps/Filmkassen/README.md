@@ -3,7 +3,7 @@ En webapp der kan bruges til at søge efter film via DFI's api og gruppere film 
 
 Features er beskrevet i FEATURES.md
 
-Teknik er beskrevet i ../AGENTS.md .
+Teknik er beskrevet i FULLSTACK.md .
 
 ## Brug af .env fil
 Løsningen antager at der placeret en .env fil tilgængelig med flg indstillinger:
@@ -15,6 +15,8 @@ POSTGRES_DB=filmkassen
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
 
+
+Kontakt DFI for at et brugernavn og password
 
 ## Accept tests 
 
