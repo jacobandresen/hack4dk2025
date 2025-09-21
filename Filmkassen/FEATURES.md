@@ -77,8 +77,10 @@ Det skal være muligt at oprette en ny konto.
 Hvis der skal oprettes en ny konto, så skal det foregå på en anden side end login siden.
 
 ## Filmkasser
-Efer at være logget ind kan brugeren oprette en eller flere filmkasser , hvor han kan gruppere film i.  Tillad brugeren at gemme en film i en filmkasse.
+Efer at være logget ind kan brugeren oprette en eller flere filmkasser , hvor han kan gruppere film i.  Tillad brugeren at gemme en film i en filmkasse med en note tilknyttet.
 
 Når en film vises i en filmkasse, så skal der ikke være info eller knapper om filmkassen på selve filmen.
 
 Filmkassen skal vises som en accordion. Få den til at ligne en DVD opbevarings kasse.
+
+Tillad at brugeren kan slette en film fra en filmkasse igen.

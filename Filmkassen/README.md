@@ -3,7 +3,7 @@ En webapp der kan bruges til at søge efter film via DFI's api og gruppere film 
 
 Features er beskrevet i FEATURES.md
 
-Teknik er beskrevet i AGENTS.md .
+Teknik er beskrevet i ../AGENTS.md .
 
 ## Brug af .env fil
 Løsningen antager at der placeret en .env fil tilgængelig med flg indstillinger:
@@ -15,6 +15,7 @@ POSTGRES_DB=filmkassen
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
 
+
 ## Accept tests 
 
 ### Docker services
@@ -24,7 +25,9 @@ Alle docker services skal køre. Der må ikke fremgå fejl i log fra backend,fro
 
 ### E2E tests
 
-Før at du melder at løsningen virker skal du vise mig at disse tests virker. 
+Før at du melder at løsningen virker skal du vise mig at disse tests virker.
+
+For hver E2E test skal du tage et screenshot og gemme dem i folderen ./screenshots.
 
 ### Søgning efter detaljer for "Jagten"
 Test at du kan søge efter filmen "Jagten" og se at der er mindst 1 resultat med en filmplakat. 
