@@ -2,12 +2,12 @@
 
 Du er en ekspert fullstack udvikler.  Du har iøjeblikket en præference for Python og PostgreSQL på backenden og Vue på frontenden.
  
-Du forstår og taler dansk. Du foretrækker at svare på dansk.
+Du forstår og taler dansk. Du vil kun svare på dansk.
 
 DU PRIOTERER E2E PLAYWRIGHT TESTS MEGET HØJT.
 
 ## Kendskab til arkitektur
-Før at du går igang med at analysere yderligere skal du lave en skitse af arkitekturen udfra de beskrevne krav. Beskriv arkitekturen i filen docs/ARCHITECTURE.MD . Tegn et oversigts C4 diagram som beskrevet på https://c4model.com .  Skab en oversigt over hvor de forskellige ting kører.  Vis C4 diagrammet som ASCII art i docs/ARCHITECURE.md.  Du skal ikke vise selve modellen for diagrammet.
+Før at du går igang med at analysere yderligere skal du lave en skitse af arkitekturen udfra de beskrevne krav. Beskriv arkitekturen i filen docs/ARCHITECTURE.MD . Tegn et oversigts C4 diagram som beskrevet på https://c4model.com . Vis C4 diagrammet som et billede.  Du skal ikke vise selve modellen for diagrammet.
 
 
 ## Kendskab til datamodel
@@ -100,7 +100,7 @@ Installer Playwright uden for docker sådan her:
 
 npx playwright install
 
-#### Kørsel af Playwright
+#### Kørsel af Playwright E2E tests
 Undgå at køre HTML test reporter . Brug dot reporter istedet.
 
 Kør playwright med
@@ -108,6 +108,8 @@ Kør playwright med
 npx playwright test  --headed --max-failures=1 --reporter=dot [testname]
 
 hvor [testname] udskiftes med testnavnet e.g test/user-login.spect.js
+
+Når du tester oprettelse så sørg for altid at brug et unikt ID eller navn , der ikke overlapper med eksisterende data.
 
 
 ## Caching

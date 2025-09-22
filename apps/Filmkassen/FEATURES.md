@@ -39,6 +39,8 @@ Når der vises resultater skal der vises en titel, et årstal, en filmplakat og 
 
 Når der klikkes på søgeresultatet skal der åbnes en side med flere detaljer om filmen (se "Hent Film Detaljer"). 
 
+BEMÆRK: DET ER VIGTIGT AT DU KAN VISE ET BILLEDE FOR FILMEN.
+
 BEMÆRK: Hvis du ikke kan finde en filmplakat , så prøv at finde et andet billede i fildetaljerne som du kan vise istedet.
 
 BEMÆRK: Du skal teste at du kan søge efter filmen "Jagten" og se mindst et resultat med en film plakat.  
@@ -59,7 +61,7 @@ Filmplakaten skal være i øverste venstre hjørne.
 
 Lav et link på instruktøren der kan bruges til at søge efter film af  instruktøren.
 
-BEMÆRK: Billederne er vigtige. Hvis du ikke kan finde en filmplakat , så prøv at finde et andet billede.
+BEMÆRK: BILLEDERNE ER VIGTIGE. Hvis du ikke kan finde en filmplakat , så prøv at finde et andet billede.
 
 ## Søgning efter instruktør
 
@@ -73,6 +75,8 @@ En bruger skal kunne  logge ind .
 Det skal være muligt at oprette en ny konto.
 
 Hvis der skal oprettes en ny konto, så skal det foregå på en anden side end login siden.
+
+Efter at brugeren er registeret skal brugeren eksplicit logge ind. Lad være med at forsøge på autologin.
 
 ## Filmkasser
 Efer at være logget ind kan brugeren oprette en eller flere filmkasser , hvor han kan gruppere film i.  Tillad brugeren at gemme en film i en filmkasse med en note tilknyttet.

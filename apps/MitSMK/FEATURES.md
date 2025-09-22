@@ -40,13 +40,20 @@ Ved tryk på et søgeresultat skal der vises yderligere detaljer om kunstværket
 
 Brugeren kan søge efter kunst uden at være logget ind.
 
-Medtag kun titlen i søgefeltet og en knap hvor der står søg. Der skal ikke være andre knapper i søgeformen. Medtag kun resulter der er i public domain.
+Medtag kun titlen i søgefeltet og en knap hvor der står søg. Der skal ikke være andre knapper i søgeformen. 
 
 Når der vises resultater skal der vises en titel, et årstal, en billede og kunstnerens navn. 
 
+Hvis du ikke kan finde kunstneren så skal du ikke skrive noget
+
 Når der klikkes på søgeresultatet skal der åbnes en side med flere detaljer om kunstværket (se "Vis kunstværk"). 
 
-BEMÆRK: Det er vigtigt at du kan vise billeder her.
+Prøv at tage højde for at billederne kan være af forskellige størrelse.  Find en god balance , sådan at de største billeder ikke bliver alt for store.
+
+BEMÆRK: Det er vigtigt at du kan vise billeder her. Skip resultater uden billeder.
+
+BEMÆRK: Kunstneren er kendt for de fleste værker . Hvis du slet ikke kan finde nogen , så har du lavet noget galt.
+
 BEMÆRK: Du skal teste at du kan søge efter "Amager" og se mindst et resultat, hvor der er mindst et billede.  
 
 
@@ -63,6 +70,9 @@ Tilbyd en knap så brugeren kan downloaded billedet i en højere opløsning hvis
  
 BEMÆRK: DET ER VIGTIGT AT DU KAN VISE BILLEDET HER.
 
+Husk at url encode inventar nummeret.
+
+Hvis du ikke kan finde kunstneren så skal du ikke skrive noget - lad være med a skrive "Unknown".
 
 ## Søgning efter kunstner
 
@@ -82,7 +92,7 @@ Efer at være logget ind kan brugeren oprette en eller flere samlinger , hvor ha
 
 Når et maleri vises i en samling, så skal der ikke være info eller knapper om samlingen på selve maleriet.
 
-Samlingen skal vises som en accordion. 
+Samlingerne skal vises i en accordion.  Vis billeder fra den samling der er valgt.
 
 
 Tillad at brugeren kan slette et maleri fra en samling igen.

@@ -1,50 +1,102 @@
 # Filmkassen
 En webapp der kan bruges til at søge efter film via DFI's api og gruppere film i filmkasser skabt af brugere.
 
-Features er beskrevet i FEATURES.md
+## Features
+- Søg efter film via DFI API
+- Vis filmdetaljer med plakater og klip
+- Opret og administrer filmkasser
+- Tilføj film til filmkasser med noter
+- Søg efter film efter instruktør
 
-Teknik er beskrevet i FULLSTACK.md .
+## Teknisk Stack
+- **Frontend**: Vue.js 3 + TypeScript + Tailwind CSS
+- **Backend**: FastAPI + Python
+- **Database**: PostgreSQL
+- **Containerization**: Docker Compose
+- **Testing**: Playwright E2E tests + Python pytest
 
-## Brug af .env fil
-Løsningen antager at der placeret en .env fil tilgængelig med flg indstillinger:
+## Setup
 
+### Forudsætninger
+- Docker og Docker Compose
+- Node.js (for Playwright tests)
+- Python 3.11+ (for backend tests)
+
+### 1. Opret .env fil
+Opret en `.env` fil i roden af projektet med følgende indhold:
+
+```env
+# DFI API Configuration
 DFI_API_BASE_URL=https://api.dfi.dk/v1
-DFI_API_USERNAME=[Brugernavn]
-DFI_API_PASSWORD=[password]
+DFI_API_USERNAME=your_username_here
+DFI_API_PASSWORD=your_password_here
+
+# Database Configuration
 POSTGRES_DB=filmkassen
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
 
+# Security
+SECRET_KEY=your-secret-key-here-change-in-production
+```
 
-Kontakt DFI for at et brugernavn og password
+**Vigtigt**: Kontakt DFI for at få et brugernavn og password til deres API.
 
-## Accept tests 
+### 2. Start applikationen
+```bash
+# Start alle services
+npm run dev
 
-### Docker services
+# Eller direkte med docker-compose
+docker-compose up --build
+```
 
-Alle docker services skal køre. Der må ikke fremgå fejl i log fra backend,frontend og database services i docker.
+### 3. Åbn applikationen
+Gå til http://localhost:3000 i din browser.
 
+## Testing
 
-### E2E tests
+### E2E Tests
+```bash
+# Installer Playwright
+npm run install:playwright
 
-Før at du melder at løsningen virker skal du vise mig at disse tests virker.
+# Kør E2E tests
+npm run test:e2e
+```
 
-For hver E2E test skal du tage et screenshot og gemme dem i folderen ./screenshots.
+### Backend Tests
+```bash
+# Kør backend tests
+npm run test:backend
+```
 
-### Søgning efter detaljer for "Jagten"
-Test at du kan søge efter filmen "Jagten" og se at der er mindst 1 resultat med en filmplakat. 
+## Accept Tests
 
-Testen skal vise at der kan klikkes på søgesultatet og vise flere detaljer om filmen.
+### Docker Services
+Alle docker services skal køre uden fejl. Tjek logs med:
+```bash
+docker-compose logs
+```
 
-Tjek at den er instrueret af "Thomas Vinterberg" og at der er en synlig filmplakat.
+### E2E Tests
+Før du melder løsningen som færdig, skal du vise at disse tests virker:
 
-### Oprettelse af filmkassen "Danske film"
+1. **Søgning efter "Jagten"**: Test at du kan søge efter filmen "Jagten" og se mindst 1 resultat med en filmplakat
+2. **Oprettelse af filmkasse "Danske film"**: Test at du kan oprette en bruger, oprette en filmkasse "Danske film", søge efter "Jagten" og tilføje den til filmkassen
 
-Test at du kan oprette en bruger som kan oprette en filmkasse "Danske film"
+Screenshots gemmes automatisk i `./screenshots/` folderen under testkørslen.
 
-Tjek at du kan søge efter filmen "Jagten" og tilføje den til filmkassen "Danske film"
+## Arkitektur
+Se `docs/ARCHITECTURE.md` for detaljeret arkitektur beskrivelse.
 
-Tjek at du kan se detaljerne om "Jagten" ved at klikke på "Jagten" i filmkassen "Danske film"
+## Datamodel
+Se `docs/DATAMODEL.md` for datamodel beskrivelse.
+
+## API Dokumentation
+Når applikationen kører, kan du se API dokumentationen på:
+- Swagger UI: http://localhost:3000/api/docs
+- OpenAPI spec: `docs/openapi.yaml`
 
 
 
