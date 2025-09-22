@@ -86,3 +86,5 @@ Når en film vises i en filmkasse, så skal der ikke være info eller knapper om
 Filmkassen skal vises som en accordion. Få den til at ligne en DVD opbevarings kasse.
 
 Tillad at brugeren kan slette en film fra en filmkasse igen.
+
+Når filmen allerede er i en filmkasse , så skriv hvilken filmkasse eller filmkasser den er i.  Tillad at den også kan tilføje til en anden en.
