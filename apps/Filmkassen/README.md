@@ -6,6 +6,7 @@ Features er beskrevet i FEATURES.md
 
 Teknik er beskrevet i FULLSTACK.md
 
+passwords til DFI api er i .env filen
 
 ## Accept Tests
 

@@ -36,13 +36,17 @@ Brug SwaggerUI til at servere resultaterne fra /swagger i backend. Inkluder /swa
 
 BEMÆRK: Hver gang at du ændrer i API'er eller database tabeller skal du opdatere datamodellen.
 
+## Typescript
+
+Søg for at der er en tsconfig.json når du bruger typescript.
+
 ## Typescript typer
 
 Importer typescript typerne automatisk fra /swagger før at du begynder på frontenden.
 
-
 BEMÆRK: Hver gang at du ændrer i openapi beskrivelsen skal du opdatere typescript typerne.
 
+BEMÆRK: Hver gang du opdatere kode , skal du sørge for at der ikke er nogen typescript fejl. 
 ## Clean architecture.
 
 Løsningen skal have en modulær opdeling med fokus på lav kompleksitet i hvert enkelt modul. Tag inspiration fra Hexagonal arkitektur (clean architecture).
