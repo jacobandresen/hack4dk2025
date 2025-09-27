@@ -30,6 +30,8 @@ BEMÆRK: Søgningen fra søgeformen på skærmen skal mappes til attributten"key
 
 BEMÆRK: SMK API'et bruger image_thumbnail og image_iiif_id som attributter for billeder.
 
+BEMÆRK: kunstnerens navn står i creator
+
 ## Forside
 
 Forsiden starter med at en søgeform, hvor der kan søges efter en kunst. Bemærk at søgeformen kun skal være der 1 gang.  Når der er blevet søgt , så skal der vises søgeresultater.  Det skal være muligt at køre en ny søgning som overskriver gamle søgeresultater.

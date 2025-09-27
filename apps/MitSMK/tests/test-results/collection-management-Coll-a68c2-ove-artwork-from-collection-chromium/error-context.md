@@ -1,0 +1,52 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e6]:
+      - link "M MitSMK" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e9] [cursor=pointer]: M
+        - generic [ref=e10] [cursor=pointer]: MitSMK
+      - generic [ref=e11]:
+        - link "Søg kunst" [ref=e12] [cursor=pointer]:
+          - /url: /
+        - link "Mine samlinger" [ref=e13] [cursor=pointer]:
+          - /url: /collections
+        - generic [ref=e14]:
+          - generic [ref=e15]: Hej, testuser_1758900465862
+          - button "Log ud" [ref=e16] [cursor=pointer]
+  - main [ref=e17]:
+    - generic [ref=e18]:
+      - button "Tilbage" [ref=e19] [cursor=pointer]:
+        - img [ref=e20] [cursor=pointer]
+        - text: Tilbage
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - img "Gilde på Amager" [ref=e25]
+          - link "Download billede" [ref=e27] [cursor=pointer]:
+            - /url: https://iip-thumb.smk.dk/iiif/jp2/3t945t177_kks9647.tif.jp2/full/!1024,/0/default.jpg
+            - img [ref=e28] [cursor=pointer]
+            - text: Download billede
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - heading "Gilde på Amager" [level=1] [ref=e32]
+            - generic [ref=e33]:
+              - paragraph [ref=e34]:
+                - generic [ref=e35]: "Kunstner:"
+                - text: Henneberg, H. C.
+              - paragraph [ref=e36]:
+                - generic [ref=e37]: "Inventarnummer:"
+                - text: KKS9647
+              - paragraph [ref=e38]:
+                - generic [ref=e39]: "Type:"
+                - text: Træsnit, Grafik
+              - paragraph [ref=e40]:
+                - generic [ref=e41]: Public Domain
+          - generic [ref=e42]:
+            - heading "Tilføj til samling" [level=3] [ref=e43]
+            - generic [ref=e44]:
+              - text: Du har ingen samlinger endnu.
+              - link "Opret din første samling" [ref=e45] [cursor=pointer]:
+                - /url: /collections
+```

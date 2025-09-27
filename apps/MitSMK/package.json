@@ -1,0 +1,18 @@
+{
+  "name": "mitsmk",
+  "version": "1.0.0",
+  "description": "MitSMK - Art search and collection management",
+  "scripts": {
+    "dev": "docker-compose up --build",
+    "test:e2e": "cd tests && npx playwright test",
+    "test:e2e:headed": "cd tests && npx playwright test --headed",
+    "test:artwork-search": "cd tests && npx playwright test artwork-search.spec.ts --headed --max-failures=1 --reporter=dot",
+    "test:user-login": "cd tests && npx playwright test user-registration.spec.ts --headed --max-failures=1 --reporter=dot",
+    "test:collections": "cd tests && npx playwright test collection-management.spec.ts --headed --max-failures=1 --reporter=dot",
+    "test:acceptance": "cd tests && npx playwright test acceptance-tests.spec.ts --headed --max-failures=1 --reporter=dot"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
+

@@ -1,0 +1,627 @@
+openapi: 3.0.3
+info:
+  title: Filmkassen API
+  description: API for film search and collection management using DFI's API
+  version: 1.0.0
+  contact:
+    name: Filmkassen Team
+    email: support@filmkassen.dk
+
+servers:
+  - url: http://localhost:3000/api
+    description: Development server
+
+paths:
+  # Authentication endpoints
+  /auth/register:
+    post:
+      summary: Register new user
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistration'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /auth/login:
+    post:
+      summary: Login user
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /auth/logout:
+    post:
+      summary: Logout user
+      tags: [Authentication]
+      responses:
+        '200':
+          description: Logout successful
+
+  # Movie search endpoints
+  /movies/search:
+    get:
+      summary: Search movies
+      tags: [Movies]
+      parameters:
+        - name: title
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Movie title to search for
+        - name: director
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Director name to search for
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  movies:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MovieSummary'
+                  total:
+                    type: integer
+                    description: Total number of results
+
+  /movies/{movie_id}:
+    get:
+      summary: Get movie details
+      tags: [Movies]
+      parameters:
+        - name: movie_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Movie ID
+      responses:
+        '200':
+          description: Movie details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+        '404':
+          description: Movie not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  # Director search endpoints
+  /directors/search:
+    get:
+      summary: Search directors
+      tags: [Directors]
+      parameters:
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Director name to search for
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  directors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Director'
+                  total:
+                    type: integer
+
+  /directors/{director_id}/movies:
+    get:
+      summary: Get movies by director
+      tags: [Directors]
+      parameters:
+        - name: director_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Director ID
+      responses:
+        '200':
+          description: Director's movies
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  director:
+                    $ref: '#/components/schemas/Director'
+                  movies:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MovieSummary'
+
+  # Collection endpoints
+  /collections:
+    get:
+      summary: Get user's collections
+      tags: [Collections]
+      security:
+        - sessionAuth: []
+      responses:
+        '200':
+          description: User's collections
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Collection'
+        '401':
+          description: Unauthorized
+
+    post:
+      summary: Create new collection
+      tags: [Collections]
+      security:
+        - sessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CollectionCreate'
+      responses:
+        '201':
+          description: Collection created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+        '401':
+          description: Unauthorized
+
+  /collections/{collection_id}:
+    get:
+      summary: Get collection details
+      tags: [Collections]
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: collection_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Collection details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionDetail'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Collection not found
+
+    put:
+      summary: Update collection
+      tags: [Collections]
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: collection_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CollectionUpdate'
+      responses:
+        '200':
+          description: Collection updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Collection not found
+
+    delete:
+      summary: Delete collection
+      tags: [Collections]
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: collection_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Collection deleted
+        '401':
+          description: Unauthorized
+        '404':
+          description: Collection not found
+
+  /collections/{collection_id}/movies:
+    post:
+      summary: Add movie to collection
+      tags: [Collections]
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: collection_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CollectionMovieAdd'
+      responses:
+        '201':
+          description: Movie added to collection
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionMovie'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Collection or movie not found
+
+  /collections/{collection_id}/movies/{movie_id}:
+    delete:
+      summary: Remove movie from collection
+      tags: [Collections]
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: collection_id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: movie_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Movie removed from collection
+        '401':
+          description: Unauthorized
+        '404':
+          description: Collection or movie not found
+
+    put:
+      summary: Update movie note in collection
+      tags: [Collections]
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: collection_id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: movie_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CollectionMovieUpdate'
+      responses:
+        '200':
+          description: Movie note updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionMovie'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Collection or movie not found
+
+components:
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: cookie
+      name: session
+
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        email:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+      required:
+        - id
+        - username
+        - email
+        - created_at
+
+    UserRegistration:
+      type: object
+      properties:
+        username:
+          type: string
+          minLength: 3
+          maxLength: 50
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 8
+      required:
+        - username
+        - email
+        - password
+
+    UserLogin:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - password
+
+    LoginResponse:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        message:
+          type: string
+
+    MovieSummary:
+      type: object
+      properties:
+        id:
+          type: integer
+        dfi_id:
+          type: integer
+        title:
+          type: string
+        year:
+          type: integer
+        poster_url:
+          type: string
+          format: uri
+        director:
+          type: string
+      required:
+        - id
+        - dfi_id
+        - title
+        - year
+        - director
+
+    Movie:
+      type: object
+      properties:
+        id:
+          type: integer
+        dfi_id:
+          type: integer
+        title:
+          type: string
+        year:
+          type: integer
+        poster_url:
+          type: string
+          format: uri
+        director:
+          type: string
+        cast:
+          type: array
+          items:
+            type: string
+        clips:
+          type: array
+          items:
+            type: string
+            format: uri
+        videotek_url:
+          type: string
+          format: uri
+        description:
+          type: string
+        cached_at:
+          type: string
+          format: date-time
+      required:
+        - id
+        - dfi_id
+        - title
+        - year
+        - director
+
+    Director:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        dfi_id:
+          type: string
+        bio:
+          type: string
+        cached_at:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+
+    Collection:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - created_at
+        - updated_at
+
+    CollectionCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 500
+      required:
+        - name
+
+    CollectionUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 500
+
+    CollectionDetail:
+      allOf:
+        - $ref: '#/components/schemas/Collection'
+        - type: object
+          properties:
+            movies:
+              type: array
+              items:
+                $ref: '#/components/schemas/CollectionMovie'
+
+    CollectionMovie:
+      type: object
+      properties:
+        id:
+          type: integer
+        movie:
+          $ref: '#/components/schemas/MovieSummary'
+        note:
+          type: string
+        added_at:
+          type: string
+          format: date-time
+      required:
+        - id
+        - movie
+        - added_at
+
+    CollectionMovieAdd:
+      type: object
+      properties:
+        movie_id:
+          type: integer
+        note:
+          type: string
+          maxLength: 1000
+      required:
+        - movie_id
+
+    CollectionMovieUpdate:
+      type: object
+      properties:
+        note:
+          type: string
+          maxLength: 1000
+
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        error_code:
+          type: string
+      required:
+        - detail

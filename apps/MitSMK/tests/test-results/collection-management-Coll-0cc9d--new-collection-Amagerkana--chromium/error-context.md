@@ -1,0 +1,44 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e6]:
+      - link "M MitSMK" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e9] [cursor=pointer]: M
+        - generic [ref=e10] [cursor=pointer]: MitSMK
+      - generic [ref=e11]:
+        - link "Søg kunst" [ref=e12] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e13]:
+          - link "Log ind" [ref=e14] [cursor=pointer]:
+            - /url: /login
+          - link "Opret konto" [ref=e15] [cursor=pointer]:
+            - /url: /register
+  - main [ref=e16]:
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e21]: M
+        - heading "Opret konto" [level=1] [ref=e22]
+        - paragraph [ref=e23]: Opret en ny MitSMK konto
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - generic [ref=e26]: Brugernavn
+          - textbox "Brugernavn" [ref=e27]: testuser_1758900465849
+        - generic [ref=e28]:
+          - generic [ref=e29]: E-mail
+          - textbox "E-mail" [ref=e30]: test_1758900465849@example.com
+        - generic [ref=e31]:
+          - generic [ref=e32]: Adgangskode
+          - textbox "Adgangskode" [ref=e33]: testpassword123
+        - generic [ref=e34]:
+          - generic [ref=e35]: Bekræft adgangskode
+          - textbox "Bekræft adgangskode" [ref=e36]: testpassword123
+        - button "Opret konto" [ref=e37] [cursor=pointer]:
+          - generic [ref=e38] [cursor=pointer]: Opret konto
+      - paragraph [ref=e40]:
+        - text: Har du allerede en konto?
+        - link "Log ind" [ref=e41] [cursor=pointer]:
+          - /url: /login
+```
